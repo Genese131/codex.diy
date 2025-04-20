@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  simple-codex:
+    build:
+      context: .
+      dockerfile: Dockerfile.simple
+    container_name: simple-codex
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    stdin_open: true
+    tty: true
+    environment:
+      - TERM=xterm-256color

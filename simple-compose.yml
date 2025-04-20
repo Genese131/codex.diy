@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  codex:
+    build:
+      context: .
+      dockerfile: simple-dockerfile
+    container_name: codex-cli
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+    stdin_open: true
+    tty: true
+    environment:
+      - CODEX_SANDBOX=docker

@@ -1,0 +1,45 @@
+{
+  "name": "codex-diy",
+  "version": "1.0.0",
+  "description": "A versatile AI coding assistant with multi-model support",
+  "type": "module",
+  "main": "codex-unified.js",
+  "scripts": {
+    "start": "node codex-unified.js",
+    "dev": "nodemon codex-unified.js",
+    "format": "prettier --check *.json *.md",
+    "format:fix": "prettier --write *.json *.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/codex-diy.git"
+  },
+  "keywords": [
+    "ai",
+    "coding",
+    "assistant",
+    "openai",
+    "gemini",
+    "ollama",
+    "gpt"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^3.0.0"
+  },
+  "dependencies": {
+    "archiver": "^6.0.2",
+    "body-parser": "^1.20.2",
+    "child_process": "^1.0.2",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "express-fileupload": "^1.5.1",
+    "fs-extra": "^11.3.0",
+    "multer": "^1.4.5-lts.1",
+    "node-fetch": "^3.3.2",
+    "simple-git": "^3.27.0",
+    "socket.io": "^4.8.1",
+    "uuid": "^9.0.1"
+  }
+}

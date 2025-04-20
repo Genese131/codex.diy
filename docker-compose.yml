@@ -1,0 +1,27 @@
+version: '3.8'
+
+# Use .env file for environment variables
+services:
+  codex:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codex-cli
+    volumes:
+      - .:/workspace
+      - codex-data:/root/.codex
+      - ./.env:/app/.env:ro
+    working_dir: /workspace
+    env_file:
+      - ./.env
+    environment:
+      - CODEX_SANDBOX=docker
+    stdin_open: true
+    tty: true
+    network_mode: "host"
+    entrypoint: ["codex"]
+    command: []
+
+volumes:
+  codex-data:
+    name: codex-data

@@ -1,0 +1,32 @@
+FROM node:22-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Install dotenv-cli globally first
+RUN npm install -g dotenv-cli
+
+# Copy package files
+COPY package.json ./
+COPY codex-cli/package.json ./codex-cli/
+
+# Install dependencies
+RUN npm install
+RUN cd codex-cli && npm install
+
+# Copy source code
+COPY . .
+
+# Build the application
+RUN npm run build
+
+# Set environment variables
+ENV NODE_ENV=production
+ENV CODEX_SANDBOX=docker
+
+# Create a script to handle environment variables and launch codex
+RUN echo '#!/bin/sh\ncp -f /workspace/.env /app/.env 2>/dev/null || true\nexec dotenv -- codex "$@"' > /app/entrypoint.sh && \
+    chmod +x /app/entrypoint.sh
+
+# Set the entrypoint to our custom script
+ENTRYPOINT ["/app/entrypoint.sh"]
